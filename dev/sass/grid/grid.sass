@@ -46,7 +46,7 @@ $cnt: 1
 =grid($col_cnt,$letter,$full:null)
 	@for $i from 1 through $col_cnt
 		@if($full)
-			$one_full_col: ( 100% / ($desktop / 100) )
+			$one_full_col: ( 100% / ($tablet-large / 100) )
 			$one_col: $one_full_col - ($one_full_col * 0.3) // 70px
 			$one_dep: $one_full_col - ($one_full_col * 0.7) // 30px
 			#{$letter}#{$i}
@@ -65,11 +65,7 @@ $cnt: 1
 
 @media screen and (min-width: $mobile#{$unit})
 	+grid($cols,'.m')
-@media screen and (min-width: $mobile-large#{$unit})
-	+grid($cols,'.ml')
 @media screen and (min-width: $tablet#{$unit})
 	+grid($cols,'.t')
 @media screen and (min-width: $tablet-large#{$unit})
 	+grid($cols,'.tl')
-@media screen and (min-width: $desktop#{$unit})
-	+grid($cols,'.d','true')

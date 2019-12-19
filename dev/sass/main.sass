@@ -4,7 +4,8 @@
 $font_body: 14px
 
 +font_inc($f_reg,'SFProDisplayRegular.ttf')
-+font_inc($f_medium,'SFProDisplayMedium.ttf')
++font_inc($f_light,'SFProDisplayLight.ttf')
++font_inc($f_bold,'SFProDisplaybold.ttf')
 .set
 	+wh(100%)
 html,body
@@ -15,14 +16,10 @@ body
 	+font($font_body,$f_reg,#000)
 $unit: 'px'
 @import "media/m"
-+mq($mobile-large#{$unit})
-	@import "media/ml"
 +mq($tablet#{$unit})
 	@import "media/t"
 +mq($tablet-large#{$unit})
 	@import "media/tl"
-+mq($desktop#{$unit})
-	@import "media/d"
 +mq($desktop-large#{$unit})
 	@import "media/dl"
 @import "grid/grid"
