@@ -76,13 +76,27 @@ block content
                 .cal-choose
                     .title-sub
                         h3 Выберите год:
-                    .cal-choose-year
-                        span 2019
+                    select.cal-choose-year
+                        option(value='2019') 2019
+                        option(value='2020') 2020
+                        option(value='2021') 2021
+                        option(value='2022') 2022
                 .cal-choose
                     .title-sub
                         h3 Выберите месяц:
-                    .cal-choose-month
-                        span Декабрь
+                    select.cal-choose-month
+                        option(value='january') Январь
+                        option(value='february') Февраль
+                        option(value='march') Март
+                        option(value='april') Апрель
+                        option(value='may') Май
+                        option(value='june') Июнь
+                        option(value='july') Июль
+                        option(value='august') Август
+                        option(value='september') Сентябрь
+                        option(value='october') Октябрь
+                        option(value='november') Ноябрь
+                        option(value='december') Декабрь
                 .cal-week
                     .cal-control-button
                         span.cal-control-button-day Пн
@@ -156,7 +170,7 @@ block content
                     button.cal-control-button
                         span.cal-control-button-day 19
                         span.cal-control-button-do 0
-                    button.cal-control-button.cal-control-button-activ
+                    button.cal-control-button
                         span.cal-control-button-day 20
                         span.cal-control-button-do 3
                     button.cal-control-button
@@ -171,7 +185,7 @@ block content
                     button.cal-control-button
                         span.cal-control-button-day 24
                         span.cal-control-button-do 0
-                    button.cal-control-button
+                    button.cal-control-button.cal-control-button-activ
                         span.cal-control-button-day 25
                         span.cal-control-button-do 0
                     button.cal-control-button

@@ -1,4 +1,6 @@
 $unit : 'px'
+a
+  color: #000
 .section
   +w($mobile#{$unit})
   padding: 0 5px 50px
@@ -25,7 +27,7 @@ $unit : 'px'
     &:last-child
       margin-bottom: 0
   &-body
-    +w(280px)
+    +w(92%)
     min-height: 70px
     padding: 10px 10px 10px 30px
     border: 1px solid $border
@@ -38,14 +40,12 @@ $unit : 'px'
     left: 6.5px
     top: 29px
   &-name
-    +w(210px)
     font-family: $f_bold
     margin-bottom: 10px
-    position: relative
+    display: flex
+    justify-content: space-between
+    align-items: center
     label
-      position: absolute
-      right: -30px
-      top: -5px
   &-desc
     label
       span
@@ -80,31 +80,33 @@ $unit : 'px'
     padding: 5px 0
     display: flex
     align-items: center
-    span
+    select
       margin-left: 10px
+      border: none
+      background-color: transparent
   &-week
-    +w(266px)
     display: flex
-    margin: 5px auto 0
+    margin: 5px 0
     div
       background-color: #000
       border: none!important
+      margin-right: 1%
       span
         color: #fff
   &-control
-    +w(266px)
     margin: auto
     padding: 5px 0 0
     display: flex
     flex-wrap: wrap
     &-button
-      +w(35px)
+      +w(13%)
       border: 1px solid $border
       border-radius: 5px
       padding: 3px
-      margin: 0 3px 3px 0
+      margin-bottom: 3px
+      margin-right: 1%
       &-first
-        margin-left: 228px
+        margin-left: 84%
       &-activ
         background-color: #000
         span
