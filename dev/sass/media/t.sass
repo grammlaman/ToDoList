@@ -2,10 +2,26 @@
   +w($tablet#{$unit})
   display: flex
   align-items: flex-start
-  justify-content: space-between
+  justify-content: space-around
   flex-wrap: wrap
   padding: 50px 20px
   &>div
     flex: 0 0 49%
+.title
+  span
+    font-size: 24px
 .nav
   display: none
+.add
+  &-row
+    &-cont
+      +w(70%)
+      &:last-child
+        +w(29%)
+  input,select
+    +w(100%)
+    flex: 0 0 100%
+  &-buttons
+    justify-content: flex-start
+    button:first-child
+      margin-right: 20px

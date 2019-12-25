@@ -7,7 +7,7 @@ block content
         .section
             .do#do
                 .title
-                    h2 Список дел #[a(href='#calendar') на 20.12.2019]:
+                    span Список дел #[a(href='#calendar') на 20.12.2019]:
                 .do-list
                     input(type='radio' name='desc' style='display:none')#close
                     .do-cont.do-home
@@ -72,7 +72,7 @@ block content
                                 +img('delete.jpg')
             .cal#calendar
                 .title
-                    h2 Календарь:
+                    span Календарь:
                 .cal-choose
                     .title-sub
                         h3 Выберите год:
@@ -208,19 +208,24 @@ block content
                         span.cal-control-button-do 0
             form.add#add
                 .title
-                    h2 Новое дело:
-                input(type='text' placeholder='Название').add-name
-                textarea(placeholder='Описание').add-desc
-                input(type='data' value='20.12.2019').add-data
-                select.add-category
-                    option(value='sport') Спорт
-                    option(value='home') Дом
-                    option(value='shop') Магазин
-                    option(value='health') Здоровье
-                    option(value='work') Работа
-                    option(value='other') Прочее
-                button.add-sub Подтвердить
-                button.add-clear Очистить
+                    span Новое дело:
+                .add-cont
+                    .add-row
+                        .add-row-cont
+                            input(type='text' placeholder='Название').add-name
+                            textarea(placeholder='Описание').add-desc
+                        .add-row-cont.add-row
+                            input(type='data' value='20.12.2019').add-data
+                            select.add-category
+                                option(value='sport') Спорт
+                                option(value='home') Дом
+                                option(value='shop') Магазин
+                                option(value='health') Здоровье
+                                option(value='work') Работа
+                                option(value='other') Прочее
+                    .add-row.add-buttons
+                        button.add-sub Подтвердить
+                        button.add-clear Очистить
         .nav
             a(href='#do') Do
             a(href='#calendar') Calendar
