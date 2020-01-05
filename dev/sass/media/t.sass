@@ -1,5 +1,6 @@
 .section
   +w($tablet#{$unit})
+  padding: 0
   display: flex
   align-items: flex-start
   justify-content: space-between
@@ -9,6 +10,8 @@
     font-size: 24px
 .do
   +w(calc(100% - 350px))
+  &-list
+    height: calc(100vh - 400px)
   &-number
     flex: 0 0 50px
 .nav
