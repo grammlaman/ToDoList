@@ -1,17 +1,20 @@
 $unit : 'px'
 a
   color: #000
+h1
+  text-align: center
+  font-size: 50px
+  font-family: $f_bold
+  margin-top: 30px
 .section
   +w($mobile#{$unit})
   padding: 0 5px 50px
   margin: 0 auto
 
 .title
-  padding: 10px 20px
-  span
+  margin: 30px 0 10px
+  span,a
     +font(18px,$f_bold)
-  a
-    color: red
   &-sub
     h3
       font-family: $f_bold
@@ -19,6 +22,11 @@ a
   &-list
     display: flex
     flex-direction: column
+    height: 300px
+    overflow-y: scroll
+    padding: 5px
+    border-top: 1px solid $border
+    border-bottom: 1px solid $border
   &-cont
     display: flex
     align-items: flex-start
@@ -28,29 +36,33 @@ a
       margin-bottom: 0
   &-body
     +w(92%)
-    min-height: 70px
-    padding: 10px 10px 10px 30px
+    min-height: 64px
     border: 1px solid $border
     border-radius: 7px
-    position: relative
-  &-number
-    +w(17px)
-    text-align: center
-    position: absolute
-    left: 6.5px
-    top: 29px
-  &-name
-    font-family: $f_bold
-    margin-bottom: 10px
     display: flex
-    justify-content: space-between
     align-items: center
-    label
+    padding: 5px 5px 5px 0
+  &-number
+    flex: 0 0 30px
+    text-align: center
+    span
+      +font(14px,$f_bold)
+  &-row
+    +w(100%)
+    display: flex
+    align-items: center
+    justify-content: space-between
+  &-name
+    +font(14px,$f_bold)
+    text-transform: uppercase
+    letter-spacing: 1px
+  &-close
+    +w(20px)
   &-desc
     label
       span
         display: block
-        max-height: 19px
+        max-height: 29px
         overflow: hidden
         transition: .35s ease
       input:checked~span
@@ -60,21 +72,9 @@ a
     flex-direction: column
     align-items: center
     button
-      +wh(20px)
-      padding: 2px
-      border: 1px solid $border
-      border-radius: 5px
+      +wh(18px)
     &-done
       margin: 5px 0
-  &-home
-    .do-body
-      background-color: $blue
-  &-shop
-    .do-body
-      background-color: $red
-  &-sport
-    .do-body
-      background-color: $green
 .cal
   &-choose
     display: flex
@@ -91,22 +91,19 @@ a
     div
       background-color: #000
       border: none!important
-      margin-right: 1%
       span
         color: #fff
   &-control
-    margin: auto
     display: flex
     flex-wrap: wrap
     &-button
-      +w(13%)
+      +w(40px)
       border: 1px solid $border
       border-radius: 5px
       padding: 3px
-      margin-bottom: 3px
-      margin-right: 1%
+      margin: 3px 2px 0 2px
       &-first
-        margin-left: 84%
+        margin-left: calc((44px * 2) + 2px)
       &-activ
         background-color: #000
         span
@@ -120,7 +117,7 @@ a
       &-do
         font-size: 10px
 .add
-  input,textarea,select,button
+  input,textarea,&-select,button
     margin: 5px 0
     padding: 5px
     border: 1px solid $border
@@ -136,12 +133,13 @@ a
     justify-content: space-between
     flex-wrap: wrap
     align-items: flex-start
-  &-sub
-    background-color: $green
-  &-clear
-    background-color: $red
+  &-buttons
+    button
+      background-color: #000
+      color: #fff
 
-
+.do,.cal,.add
+  +w(310px)
 
 
 
@@ -166,7 +164,7 @@ a
   bottom: 0
   background-color: #fff
   box-shadow: 0 -3px 8px rgba(0,0,0,0.2)
-  padding: 3px 0
+  padding: 5px 0
   a
     padding: 3px 10px
     border: 1px solid $border

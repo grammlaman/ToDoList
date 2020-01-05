@@ -2,17 +2,19 @@
   +w($tablet#{$unit})
   display: flex
   align-items: flex-start
-  justify-content: space-around
+  justify-content: space-between
   flex-wrap: wrap
-  padding: 50px 20px
-  &>div
-    flex: 0 0 49%
 .title
-  span
+  span,a
     font-size: 24px
+.do
+  +w(calc(100% - 350px))
+  &-number
+    flex: 0 0 50px
 .nav
   display: none
 .add
+  +w(100%)
   &-row
     &-cont
       +w(70%)

@@ -4,72 +4,105 @@ append vars
     page_title= 'Главная страница'
 block content
     main
+        h1 To Do List
         .section
             .do#do
                 .title
-                    span Список дел #[a(href='#calendar') на 20.12.2019]:
+                    a(href='#calendar') Список дел на 08.01.2020:
+                .add-row-cont.add-row
+                    select.add-category.add-select
+                        option(value='sport') Спорт
+                        option(value='home') Дом
+                        option(value='shop') Магазин
+                        option(value='health') Здоровье
+                        option(value='work') Работа
+                        option(value='other') Прочее
                 .do-list
                     input(type='radio' name='desc' style='display:none')#close
-                    .do-cont.do-home
+                    .do-cont
                         .do-body
                             .do-number
-                                span 1
-                            .do-name
-                                span Встать
-                                label(for='close')
-                                    svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24")
-                                        path(d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z")
-                            .do-desc
-                                label
-                                    input(type='radio' name='desc' style='display:none')
-                                    span Завтра надо встать пораньше, чтобы успеть сделать зарядку и сходить в банк до работы.
+                                span 01.
+                            .do-col
+                                .do-row
+                                    span.do-name Встать
+                                    label(for='close').do-close
+                                        svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24")
+                                            path(d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z")
+                                .do-desc
+                                    label
+                                        input(type='radio' name='desc' style='display:none')
+                                        span Завтра надо встать пораньше, чтобы успеть сделать зарядку и сходить в банк до работы.
                         .do-buttons
                             button.do-buttons-red
-                                +img('redact.jpg')
+                                include ../img/redact.svg
                             button.do-buttons-done
-                                +img('done.jpg')
+                                include ../img/done.svg
                             button.do-buttons-del
-                                +img('delete.jpg')
-                    .do-cont.do-shop
+                                include ../img/delete.svg
+                    .do-cont
                         .do-body
                             .do-number
-                                span 2
-                            .do-name
-                                span Почистить зубы
-                                label(for='close')
-                                    svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24")
-                                        path(d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z")
-                            .do-desc
-                                label
-                                    input(type='radio' name='desc' style='display:none')
-                                    span Чистить зубы надо хорошо, чтобы не было кариеса, потому что лечить зубы гораздо дороже, чем ухаживать.
+                                span 02.
+                            .do-col
+                                .do-row
+                                    span.do-name Почистить зубы
+                                    label(for='close').do-close
+                                        svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24")
+                                            path(d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z")
+                                .do-desc
+                                    label
+                                        input(type='radio' name='desc' style='display:none')
+                                        span Чистить зубы надо хорошо, чтобы не было кариеса, потому что лечить зубы гораздо дороже, чем ухаживать.
                         .do-buttons
                             button.do-buttons-red
-                                +img('redact.jpg')
+                                include ../img/redact.svg
                             button.do-buttons-done
-                                +img('done.jpg')
+                                include ../img/done.svg
                             button.do-buttons-del
-                                +img('delete.jpg')
-                    .do-cont.do-sport
+                                include ../img/delete.svg
+                    .do-cont
                         .do-body
                             .do-number
-                                span 3
-                            .do-name
-                                span Отжаться
-                                label(for='close')
-                                    svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24")
-                                        path(d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z")
-                            .do-desc
-                                label
-                                    input(type='radio' name='desc' style='display:none')
-                                    span Отжаться 20 раз каждый час. Поможет держать себя в тонусе.
+                                span 03.
+                            .do-col
+                                .do-row
+                                    span.do-name Отжаться
+                                    label(for='close').do-close
+                                        svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24")
+                                            path(d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z")
+                                .do-desc
+                                    label
+                                        input(type='radio' name='desc' style='display:none')
+                                        span Отжаться 20 раз каждый час. Поможет держать себя в тонусе.
                         .do-buttons
                             button.do-buttons-red
-                                +img('redact.jpg')
+                                include ../img/redact.svg
                             button.do-buttons-done
-                                +img('done.jpg')
+                                include ../img/done.svg
                             button.do-buttons-del
-                                +img('delete.jpg')
+                                include ../img/delete.svg
+                    .do-cont
+                        .do-body
+                            .do-number
+                                span 04.
+                            .do-col
+                                .do-row
+                                    span.do-name Встать
+                                    label(for='close').do-close
+                                        svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24")
+                                            path(d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z")
+                                .do-desc
+                                    label
+                                        input(type='radio' name='desc' style='display:none')
+                                        span Чистить зубы надо хорошо, чтобы не было кариеса, потому что лечить зубы гораздо дороже, чем ухаживать.
+                        .do-buttons
+                            button.do-buttons-red
+                                include ../img/redact.svg
+                            button.do-buttons-done
+                                include ../img/done.svg
+                            button.do-buttons-del
+                                include ../img/delete.svg
             .cal#calendar
                 .title
                     span Календарь:
@@ -77,10 +110,11 @@ block content
                     .title-sub
                         h3 Выберите год:
                     select.cal-choose-year
-                        option(value='2019') 2019
                         option(value='2020') 2020
                         option(value='2021') 2021
                         option(value='2022') 2022
+                        option(value='2022') 2023
+                        option(value='2022') 2024
                 .cal-choose
                     .title-sub
                         h3 Выберите месяц:
@@ -134,7 +168,7 @@ block content
                     button.cal-control-button
                         span.cal-control-button-day 07
                         span.cal-control-button-do 0
-                    button.cal-control-button
+                    button.cal-control-button.cal-control-button-activ
                         span.cal-control-button-day 08
                         span.cal-control-button-do 0
                     button.cal-control-button
@@ -185,7 +219,7 @@ block content
                     button.cal-control-button
                         span.cal-control-button-day 24
                         span.cal-control-button-do 0
-                    button.cal-control-button.cal-control-button-activ
+                    button.cal-control-button
                         span.cal-control-button-day 25
                         span.cal-control-button-do 0
                     button.cal-control-button
@@ -215,8 +249,8 @@ block content
                             input(type='text' placeholder='Название').add-name
                             textarea(placeholder='Описание').add-desc
                         .add-row-cont.add-row
-                            input(type='data' value='20.12.2019').add-data
-                            select.add-category
+                            input(type='date').add-data
+                            select.add-category.add-select
                                 option(value='sport') Спорт
                                 option(value='home') Дом
                                 option(value='shop') Магазин
@@ -225,9 +259,9 @@ block content
                                 option(value='other') Прочее
                     .add-row.add-buttons
                         button.add-sub Подтвердить
-                        button.add-clear Очистить
+                        button(type='button').add-clear Очистить
         .nav
-            a(href='#do') Do
+            a(href='#do') Do List
             a(href='#calendar') Calendar
             a(href='#add') Add
 
