@@ -8,7 +8,7 @@ block content
         .section
             .do#do
                 .title
-                    a(href='#calendar') Список дел на 08.01.2020:
+                    span Список дел на #[a(href='#calendar' class='todayLink') 20.01.2020]:
                 .add-row-cont.add-row
                     select.add-category.add-select
                         option(value='sport') Спорт
@@ -110,6 +110,7 @@ block content
                     .title-sub
                         h3 Выберите год:
                     select.cal-choose-year
+                        option(value='2019') 2019
                         option(value='2020') 2020
                         option(value='2021') 2021
                         option(value='2022') 2022
@@ -147,99 +148,6 @@ block content
                     .cal-control-button
                         span.cal-control-button-day Вс
                 .cal-control
-                    button.cal-control-button.cal-control-button-first
-                        span.cal-control-button-day 01
-                        span.cal-control-button-do 3
-                    button.cal-control-button
-                        span.cal-control-button-day 02
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 03
-                        span.cal-control-button-do 3
-                    button.cal-control-button
-                        span.cal-control-button-day 04
-                        span.cal-control-button-do 1
-                    button.cal-control-button
-                        span.cal-control-button-day 05
-                        span.cal-control-button-do 2
-                    button.cal-control-button
-                        span.cal-control-button-day 06
-                        span.cal-control-button-do 6
-                    button.cal-control-button
-                        span.cal-control-button-day 07
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 08
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 09
-                        span.cal-control-button-do 0
-                    button.cal-control-button.cal-control-button-activ
-                        span.cal-control-button-day 10
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 11
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 12
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 13
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 14
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 15
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 16
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 17
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 18
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 19
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 20
-                        span.cal-control-button-do 3
-                    button.cal-control-button
-                        span.cal-control-button-day 21
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 22
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 23
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 24
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 25
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 26
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 27
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 28
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 29
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 30
-                        span.cal-control-button-do 0
-                    button.cal-control-button
-                        span.cal-control-button-day 31
-                        span.cal-control-button-do 0
             form.add#add
                 .title
                     span Новое дело:
