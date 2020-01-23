@@ -94,13 +94,10 @@ class List{
             //_.tasks = JSON.parse(localStorage.getItem('tasks'));
         }
     }
-
     getCurrentDate(dateStr=''){
         const _ = this;
         let date = new Date();
-        if(dateStr){
-            date = new Date(dateStr);
-        }
+        if(dateStr){date = new Date(dateStr);}
         let month = date.getMonth(),
             year = date.getFullYear(),
             monthDay = date.getDate(),
@@ -116,14 +113,11 @@ class List{
         _.currentDay = monthDay;
         _.currentYear = year;
         _.currentWeekDay = weekDay;
-
-        month+=1;
-        if(month < 10){
-            month = '0' + month;
-        }
+        _.savedDay = _.currentDay;
+        month += 1;
+        if(month < 10){month = '0' + month;}
         return year + '-' + month + '-' + monthDay;
     }
-
     getFirstDay() {
         const _ = this;
         let date = new Date(_.currentYear + '-' + (_.currentMonth + 1)),
@@ -133,11 +127,15 @@ class List{
         let firstDayButton = _.calendar.body.querySelector('.cal-control-button');
         firstDayButton.style.margin = '3px 2px 0px ' + marginLeft + 'px';
     }
-    getCurrentDay(){
+    saveActiveDay(){
         const _ = this;
-        _.calendar.body.children[_.currentDay - 1].classList.add('cal-control-button-active')
+        for(let i = 0; i < _.calendar.body.children.length; i++){
+            if(_.calendar.body.children[i].classList.contains('cal-control-button-active')){
+                _.savedDay = _.calendar.body.children[i].querySelector('.cal-control-button-day').textContent;
+            }
+        }
     }
-    clearCurrentDay(){
+    clearActiveDay(){
         const _ = this;
         for(let i = 0; i < _.calendar.body.children.length; i++){
             if(_.calendar.body.children[i].classList.contains('cal-control-button-active')){
@@ -146,6 +144,14 @@ class List{
         }
     }
     //Методы отрисовки
+    drawActiveDay(){
+        const _ = this;
+        for(let i = 0; i < _.calendar.body.children.length; i++){
+            if(_.calendar.body.children[i].querySelector('.cal-control-button-day').textContent == _.savedDay){
+                _.calendar.body.children[i].classList.add('cal-control-button-active')
+            }
+        }
+    }
     drawDays(){
         const _ = this;
         _.calendar.body.innerHTML = '';
@@ -165,11 +171,8 @@ class List{
             span.classList.add('cal-control-button-do');
             let str = _.currentYear + '-' + month + '-' +  dayNumber;
             let doCnt = _.tasks[str];
-            if(doCnt){
-                span.textContent = doCnt.length;
-            } else {
-                span.textContent = '0';
-            }
+            if(doCnt){span.textContent = doCnt.length;}
+            else {span.textContent = '0';}
             btn.append(span);
             _.calendar.body.append(btn);
         }
@@ -215,11 +218,84 @@ class List{
         _.lastTask = t;
         localStorage.clear();
         localStorage.setItem(t,JSON.stringify.t);
+        _.drawDays();
+        _.drawActiveDay();
+        _.showTasks()
     }
     addCategory(){}
     addMark(){}
+    drowTask(arr){
+        let cont = document.querySelector('.do-list');
+        cont.innerHTML = '';
+        for (let i = 0; i < arr.length; i++){
+            let doCont = document.createElement('DIV'),
+                body = document.createElement('DIV'),
+                number = document.createElement('DIV'),
+                numberSpan = document.createElement('SPAN'),
+                doNumber = i + 1 + '.',
+                col = document.createElement('DIV'),
+                row = document.createElement('DIV'),
+                name = document.createElement('SPAN'),
+                close = document.createElement('LABEL'),
+                desc = document.createElement('DIV'),
+                label = document.createElement('LABEL'),
+                radio = document.createElement('INPUT'),
+                descSpan = document.createElement('SPAN'),
+                buttons = document.createElement('DIV'),
+                redact = document.createElement('BUTTON'),
+                done = document.createElement('BUTTON'),
+                del = document.createElement('BUTTON');
+            doCont.classList.add('do-cont');
+            body.classList.add('do-body');
+            number.classList.add('do-number');
+            if(i < 9){doNumber = '0' + doNumber}
+            numberSpan.textContent = doNumber;
+            console.log(doNumber);
+            col.classList.add('do-col');
+            row.classList.add('do-row');
+            name.classList.add('do-name');
+            name.textContent = arr[i].title;
+            close.classList.add('do-close');
+            close.setAttribute('for','close');
+            close.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>';
+            desc.classList.add('do-desc');
+            radio.setAttribute('type','radio');
+            radio.setAttribute('name','desc');
+            radio.setAttribute('style','display:none');
+            descSpan.textContent = arr[i].description;
+            buttons.classList.add('do-buttons');
+            redact.classList.add('do-buttons-red');
+            done.classList.add('do-buttons-done');
+            del.classList.add('do-buttons-del');
+            doCont.append(body);
+            doCont.append(buttons);
+            body.append(number);
+            body.append(col);
+            number.append(numberSpan);
+            col.append(row);
+            col.append(desc);
+            row.append(name);
+            row.append(close);
+            desc.append(label);
+            label.append(radio);
+            label.append(descSpan);
+            buttons.append(redact);
+            buttons.append(done);
+            buttons.append(del);
+            cont.append(doCont);
+        }
+    }
+    showTasks(elem){
+        const _ = this;
+        let calendarDay = '';
+        if(elem){calendarDay = elem.querySelector('.cal-control-button-day').textContent;}
+        else{calendarDay = _.savedDay}
+        let doDate = _.calendar.yearSelect.value + '-' + _.calendar.monthSelect.value + '-' + calendarDay;
+        let tasks = [];
+        tasks = _.tasks[doDate];
+        if(tasks){_.drowTask(tasks);}
 
-
+    }
     //Методы удаления
     removeCategory(){}
     removeMark(){}
@@ -230,7 +306,9 @@ class List{
         _.setMonthName();
         _.setYearName();
         _.drawDays();
-        _.getCurrentDay();
+        _.saveActiveDay();
+        _.drawActiveDay();
+        _.showTasks()
     }
 }
 
@@ -243,17 +321,10 @@ list.addTask({
     marks: [1,3,4]
 });
 list.addTask({
-    title: 'Пить',
-    description: 'Люблю кушать',
+    title: 'Покушать',
+    description: 'Завтра надо встать пораньше, чтобы успеть сделать зарядку и сходить в банк до работы.',
     catID: 2,
-    date: '2020-01-31',
-    marks: [1,3,4]
-});
-list.addTask({
-    title: 'Пить',
-    description: 'Люблю кушать',
-    catID: 2,
-    date: '2025-10-31',
+    date: '2020-01-23',
     marks: [1,3,4]
 });
 
@@ -271,26 +342,11 @@ list.calendar.yearSelect.addEventListener('change',function (el) {
 list.calendar.body.addEventListener('click',function (el) {
     let clickTarget = el.target;
     if(clickTarget.tagName == 'DIV') return;
-    if(clickTarget.tagName == 'SPAN'){
-        clickTarget = clickTarget.parentElement;
-    }
-    list.clearCurrentDay();
-    clickTarget.classList.add('cal-control-button-active');
-    let calendarDay = clickTarget.querySelector('.cal-control-button-day').textContent;
-    if(calendarDay < 10){
-        calendarDay = '0' + calendarDay;
-    }
-    list.calendar.link.textContent = calendarDay +'.' + list.calendar.monthSelect.value +
-        '.' + list.calendar.yearSelect.value;
-    let doDate = list.calendar.yearSelect.value + '-' + list.calendar.monthSelect.value +
-        '-' + calendarDay;
-    let tasks = [];
-    tasks = list.tasks[doDate];
-    if(tasks){
-        console.log(tasks)
-    } else {
-        console.log('Запланированных дел нет :(')
-    }
+    if(clickTarget.tagName == 'SPAN'){clickTarget = clickTarget.parentElement;}
 
+    list.clearActiveDay();
+    clickTarget.classList.add('cal-control-button-active');
+    list.saveActiveDay();
+    list.showTasks(clickTarget)
 });
 

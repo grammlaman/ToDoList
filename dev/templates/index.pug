@@ -17,8 +17,8 @@ block content
                         option(value='health') Здоровье
                         option(value='work') Работа
                         option(value='other') Прочее
+                input(type='radio' name='desc' style='display:none')#close
                 .do-list
-                    input(type='radio' name='desc' style='display:none')#close
                     .do-cont
                         .do-body
                             .do-number
@@ -148,7 +148,7 @@ block content
                                 option(value='work') Работа
                                 option(value='other') Прочее
                     .add-row.add-buttons
-                        button.add-sub Подтвердить
+                        button(type='button').add-sub Подтвердить
                         button(type='button').add-clear Очистить
         .nav
             a(href='#do') Do List
