@@ -245,28 +245,56 @@ class List{
                 redact = document.createElement('BUTTON'),
                 done = document.createElement('BUTTON'),
                 del = document.createElement('BUTTON');
-            doCont.classList.add('do-cont');
-            body.classList.add('do-body');
-            number.classList.add('do-number');
+            doCont.className = 'do-cont';
+            body.className = 'do-body';
+            number.className = 'do-number';
             if(i < 9){doNumber = '0' + doNumber}
             numberSpan.textContent = doNumber;
-            console.log(doNumber);
-            col.classList.add('do-col');
-            row.classList.add('do-row');
-            name.classList.add('do-name');
+            col.className = 'do-col';
+            row.className = 'do-row';
+            name.className = 'do-name';
             name.textContent = arr[i].title;
-            close.classList.add('do-close');
+            close.className = 'do-close';
             close.setAttribute('for','close');
             close.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>';
-            desc.classList.add('do-desc');
+            desc.className = 'do-desc';
             radio.setAttribute('type','radio');
             radio.setAttribute('name','desc');
             radio.setAttribute('style','display:none');
             descSpan.textContent = arr[i].description;
-            buttons.classList.add('do-buttons');
-            redact.classList.add('do-buttons-red');
-            done.classList.add('do-buttons-done');
-            del.classList.add('do-buttons-del');
+            buttons.className = 'do-buttons';
+            redact.className = 'do-buttons-red';
+            redact.innerHTML = `<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+                                <style type="text/css">
+                                .st0{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+                                .st1{fill:none;stroke:#000000;stroke-miterlimit:10;}
+                                </style>
+                                <ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 4.4866 19.4534)" class="st0" cx="25.7" cy="4.3" rx="1.9" ry="4.4"></ellipse>
+                                <path class="st0" d="M12.1,24.1c-0.7,0.7-2.7,0-4.4-1.7S5.2,18.7,6,18"></path>
+                                <line class="st1" x1="22.6" y1="1.2" x2="5.9" y2="17.9"></line>
+                                <line class="st1" x1="12.1" y1="24.1" x2="28.8" y2="7.4"></line>
+                                <path d="M3.7,26.3c0.9,0.9,2.6,0.4,3.4,0.1l-5.9,2.7c-0.2,0-0.3-0.1-0.3-0.3L3.6,23C3.2,23.9,2.8,25.4,3.7,26.3z"></path>
+                                <path class="st1" d="M3.7,22.8C3.7,22.8,3.7,22.7,3.7,22.8"></path>
+                                <path class="st1" d="M7.1,26.4c-0.8,0.3-2.5,0.8-3.4-0.1S3.2,23.9,3.6,23"></path>
+                                <path class="st1" d="M7.3,26.3C7.3,26.3,7.2,26.3,7.3,26.3"></path>
+                                <path class="st1" d="M12.1,24.1l-4.9,2.2l-0.1,0.1l-5.9,2.7c-0.2,0-0.3-0.1-0.3-0.3L3.6,23l0.1-0.2l2.2-4.9"></path>
+                                </svg>`;
+            done.className = 'do-buttons-done';
+            done.innerHTML = `<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+                                <path d="M29.3,0.4l-16,19.9c-0.3,0.4-0.9,0.5-1.4,0.2L0.8,13.9c-0.3-0.2-0.7,0.2-0.4,0.5l11,14.9c0.5,0.6,1.4,0.6,1.8-0.1L29.6,0.6
+                                C29.8,0.4,29.4,0.1,29.3,0.4z"></path>
+                                </svg>`;
+            del.className = 'do-buttons-del';
+            del.innerHTML = `<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+                                <style type="text/css">
+                                .st0{fill:none;stroke:#000000;stroke-miterlimit:10;}
+                                </style>
+                                <polygon class="st0" points="5.3,28.8 24.7,28.8 27.2,10 2.8,10 "></polygon>
+                                <path class="st0" d="M23,4.1H7c-3.3,0-5.9,2.7-5.9,5.9l0,0H29l0,0C28.9,6.7,26.3,4.1,23,4.1z"></path>
+                                <path class="st0" d="M8.1,4.1L8.1,4.1c0-1.7,1.2-3,2.7-3h8.4c1.5,0,2.7,1.4,2.7,3"></path>
+                                <polygon class="st0" points="6.3,13 12,13 12.6,25.8 8.3,25.8 "></polygon>
+                                <polygon class="st0" points="23.7,13 18,13 17.4,25.8 21.7,25.8 "></polygon>
+                                </svg>`;
             doCont.append(body);
             doCont.append(buttons);
             body.append(number);
@@ -324,7 +352,14 @@ list.addTask({
     title: 'Покушать',
     description: 'Завтра надо встать пораньше, чтобы успеть сделать зарядку и сходить в банк до работы.',
     catID: 2,
-    date: '2020-01-23',
+    date: list.getCurrentDate(),
+    marks: [1,3,4]
+});
+list.addTask({
+    title: 'Покушать',
+    description: 'Завтра надо встать пораньше, чтобы успеть сделать зарядку и сходить в банк до работы.',
+    catID: 2,
+    date: '2020-02-23',
     marks: [1,3,4]
 });
 
